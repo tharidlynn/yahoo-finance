@@ -13,7 +13,7 @@ def scrape_commodity(cur, conn):
     market_times = [time.text for time in page.find_all('td', class_='data-col3')]
     changes = [float(change.text) if change.text != '-' else None for change in page.find_all('td', class_='data-col4')]
     percent_changes = [float(percent_change.text.replace('%', '').replace(',', '')) if percent_change.text != '-' else None for percent_change in page.find_all('td', class_='data-col5')]
-    volumes = [int(volume.text.replace(',', '')) for volume in page.find_all('td', class_='data-col6')]
+    volumes = [int(volume.text.replace(',', '')) if volume.text != '-' else None for volume in page.find_all('td', class_='data-col6')]
     open_interests = [int(interest.text.replace(',', '')) if interest.text != '-' else None for interest in page.find_all('td', class_='data-col7')]
 
     current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
