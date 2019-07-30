@@ -20,9 +20,9 @@ def main():
     while (True):
     
         try: 
-            scrape_crypto(cur, conn)
             scrape_commodity(cur, conn)
             scrape_currency(cur, conn)
+            scrape_crypto(cur, conn)
             scrape_world(cur, conn)
 
         except psycopg2.Error as e:

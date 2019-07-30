@@ -13,8 +13,8 @@ def create_database():
     conn.set_session(autocommit=True)
     cur = conn.cursor()
 
-    cur.execute('DROP DATABASE IF EXISTS yahoo_finance;')
-    cur.execute('CREATE DATABASE yahoo_finance;')
+    cur.execute(f'DROP DATABASE IF EXISTS {PG_DATABASE};')
+    cur.execute(f'CREATE DATABASE {PG_DATABASE};')
     
     conn.close()    
     print(f'{PG_DATABASE} database has been created')
